@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+    php:
+        build:
+          context: .
+          dockerfile: Dockerfile-php-apache
+        volumes:
+            - ./:/var/www/
+            - ./public/:/var/www/html/
+        ports:
+          - "80:80"
+        logging:
+          driver: none
+        depends_on:
+          - redis
+
+    redis:
+        image: redis
+        ports:
+          - "6379:6379"
