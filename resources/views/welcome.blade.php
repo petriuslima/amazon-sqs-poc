@@ -83,7 +83,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="/test-queue">Test the queue</a>
+                    <a href="/test-a-single-queue">Test a single queue</a>
+                    <a href="/test-a-chained-queue">Test a chained queue</a>
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

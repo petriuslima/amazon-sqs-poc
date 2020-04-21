@@ -15,8 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test-queue', function () {
+Route::get('/test-a-single-queue', function () {
     App\Jobs\ProcessStandard::dispatch();
 
     return response('The queue was dispatched! Check the SQS queue on AWS Panel to see your messages.');
+});
+
+Route::get('/test-a-chained-queue', function() {
+    App\Jobs\ProcessStandard::withChain([
+        new App\Jobs\ProcessAnotherStandard,
+        new App\Jobs\ProcessMasterStandard
+    ])->dispatch();
+
+    return response('The chained queue was dispatched! Wise choice ...');
 });
