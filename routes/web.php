@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test-queue', function () {
+    App\Jobs\ProcessStandard::dispatch();
+
+    return response('The queue was dispatched! Check the SQS queue on AWS Panel to see your messages.');
+});
