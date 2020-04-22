@@ -23,6 +23,7 @@ RUN docker-php-ext-install gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN apt-get -y install supervisor
+
 # Enable mod_rewrite
 RUN a2enmod rewrite
-

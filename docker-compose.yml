@@ -8,7 +8,13 @@ services:
         volumes:
             - ./:/var/www/
             - ./public/:/var/www/html/
+            - ./supervisor/:/etc/supervisor/conf.d/
         ports:
           - "80:80"
         logging:
           driver: none
+        command: >
+           sh -c "
+            supervisord -c /etc/supervisor/supervisord.conf &&
+            apache2-foreground
+           "

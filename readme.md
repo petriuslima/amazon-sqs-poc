@@ -30,6 +30,7 @@ The instructions below shows the steps to run this POC:
 6. Replace SQS_REGION config on .env with the region where the quere is
 7. Replace SQS_PREFIX config on .env with the queue URL (without the queue name at the end)
 8. From the welcome page, click on `TEST A SINGLE QUEUE` or `TEST A CHAINED QUEUE` and you should see that the message was sent to SQS! (I hope! :D)
-9. Verify SQS Panel on AWS and see that your queue has a new message
-10. Use `docker-compose exec php bash`, navigate to `/var/www` and run `php artisan queue:work`. You should see that ProcessStandard Job was executed. (Use `ctrl + C` to stop)
-11. Go to `/var/www/storage/logs/laravel.log` and you should see some Jobs strings (I hope again! :D)
+9. Verify SQS Panel on AWS and see that your queue has a new message (only if you disable supervisor on docker container, otherwise it will be hard to see the messages on Amazon SQS Panel)
+10. ~~Use `docker-compose exec php bash`, navigate to `/var/www` and run `php artisan queue:work`. You should see that ProcessStandard Job was executed. (Use `ctrl + C` to stop)~~
+11. ~~Go to `/var/www/storage/logs/laravel.log` and you should see some Jobs strings (I hope again! :D)~~
+12. The `supervisor` will be running 2 worker to process your queue. So you don't need to be worry about that, just open `storage/logs/amazon-sqs-worker.log` to see which Job was processed or go to `storage/logs/laravel.log` to see some Jobs strings (to simulate the work that should be done).
