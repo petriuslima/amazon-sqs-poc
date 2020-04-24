@@ -19,7 +19,7 @@ Route::get('/test-a-single-queue', function () {
     App\Jobs\ProcessStandard::dispatch();
 
     return response('The queue was dispatched! Check the SQS queue on AWS Panel to see your messages.');
-});
+})->name('test-a-single-queue');
 
 Route::get('/test-a-chained-queue', function() {
     App\Jobs\ProcessStandard::withChain([
@@ -28,4 +28,4 @@ Route::get('/test-a-chained-queue', function() {
     ])->dispatch();
 
     return response('The chained queue was dispatched! Wise choice ...');
-});
+})->name('test-a-chained-queue');
